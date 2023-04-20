@@ -9,8 +9,8 @@ import java.util.Arrays;
  */
 
 public class ArrayStorage {
-    private final int storageLimit = 10000;
-    private final Resume[] storage = new Resume[storageLimit];
+    private final int STORAGE_LIMIT = 10000;
+    private final Resume[] storage = new Resume[STORAGE_LIMIT];
     private int size;
 
     public void clear() {
@@ -20,10 +20,10 @@ public class ArrayStorage {
 
     public void save(Resume r) {
         int index = findIndex(r.getUuid());
-        if (size >= storageLimit) {
+        if (size >= STORAGE_LIMIT) {
             System.out.println("Хранилище переполненно");
         }
-        if (index > 0) {
+        else if (index > 0) {
             System.out.printf("Резюме с uuid %s уже существует%n", r.getUuid());
         } else {
             storage[size] = r;
@@ -56,9 +56,7 @@ public class ArrayStorage {
      * @return array, contains only Resumes in storage (without null)
      */
     public Resume[] getAll() {
-        Resume[] storageCopy = new Resume[size];
-        System.arraycopy(storage, 0, storageCopy, 0, size);
-        return storageCopy;
+        return Arrays.copyOf(storage, size);
     }
 
     public int size() {
