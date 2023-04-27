@@ -6,19 +6,15 @@ public class SortedArrayStorage extends AbstractArrayStorage {
 
     @Override
     protected void insertResume(Resume r, int index) {
-        int indexIns = (index + 1) * -1;
-        Resume[] storageTemp = new Resume[size - indexIns + 1];
-        storageTemp[0] = r;
-        System.arraycopy(storage, indexIns, storageTemp, 1, storageTemp.length - 1);
-        System.arraycopy(storageTemp, 0, storage, indexIns, storageTemp.length);
+        int insertionIndex = -index-1;
+        System.arraycopy(storage, insertionIndex, storage, insertionIndex + 1, size - insertionIndex);
+        storage[insertionIndex] = r;
     }
 
     @Override
     protected void deleteResume(int index) {
-        Resume[] storageTemp = new Resume[size - index];
-        System.arraycopy(storage, index + 1, storageTemp, 0, size - index - 1);
-        Arrays.fill(storage, index, size, null);
-        System.arraycopy(storageTemp, 0, storage, index, size - index);
+        System.arraycopy(storage,index + 1, storage, index, size - index -1);
+        storage[size - 1] = null;
     }
 
     @Override

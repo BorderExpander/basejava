@@ -29,6 +29,7 @@ public abstract class AbstractArrayStorage implements Storage {
     }
 
     protected abstract void insertResume(Resume r, int index);
+
     public Resume get(String uuid) {
         int index = findIndex(uuid);
         if (index >= 0) {
@@ -59,6 +60,7 @@ public abstract class AbstractArrayStorage implements Storage {
     }
 
     protected abstract void deleteResume(int index);
+
     protected abstract int findIndex(String uuid);
 
     public Resume[] getAll() {
@@ -67,5 +69,4 @@ public abstract class AbstractArrayStorage implements Storage {
     protected void printErrorResumeNotFound(String uuid) {
         System.out.printf("Резюме с uuid %s не найдено%n", uuid);
     }
-
 }
