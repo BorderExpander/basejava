@@ -14,7 +14,7 @@ public class Resume implements Comparable<Resume> {
        this(UUID.randomUUID().toString());
     }
 
-    public Resume(String uuid) {
+    public Resume(String uuid) { //throws CloneNotSupportedException {
         this.uuid = uuid;
     }
 

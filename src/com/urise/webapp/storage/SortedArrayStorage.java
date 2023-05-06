@@ -19,13 +19,17 @@ public class SortedArrayStorage extends AbstractArrayStorage {
         storage[size - 1] = null;
     }
 
-    @Override
-    public Resume[] getAll() {
-        return new Resume[0];
-    }
+//    @Override
+//    public Resume[] getAll() {
+//        return new Resume[0];
+//    }
 
     @Override
-    protected int findIndex(String uuid) {
+    protected boolean isExist(Resume r) {
+        return  Arrays.binarySearch(storage, 0, size, r) >= 0;
+    }
+    @Override
+    public int findIndex(String uuid) {
         Resume searchKey = new Resume(uuid);
         return Arrays.binarySearch(storage, 0, size, searchKey);
     }
