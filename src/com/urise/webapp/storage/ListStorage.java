@@ -3,15 +3,16 @@ package com.urise.webapp.storage;
 import com.urise.webapp.model.Resume;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListStorage extends AbstractStorage {
-    private final ArrayList<Resume> storage = new ArrayList<>();
+    private final List<Resume> storage = new ArrayList<>();
 
     @Override
     protected Object findSearchKey(String uuid) {
         for (int i = 0; i < storage.size(); i++) {
             Resume resume = storage.get(i);
-            if (resume.getUuid().equals(uuid)) {
+            if (storage.get(i).getUuid().equals(uuid)) {
                 return i;
             }
         }
@@ -48,9 +49,13 @@ public class ListStorage extends AbstractStorage {
         storage.clear();
     }
 
-    @Override
-    public Resume[] getAll() {
-        return storage.toArray(new Resume[0]);
+//    @Override
+//    public Resume[] getAll() {
+//        return storage.toArray(new Resume[0]);
+//    }
+
+    protected List<Resume> doCopyAll() {
+        return new ArrayList<>(storage);
     }
 
     @Override

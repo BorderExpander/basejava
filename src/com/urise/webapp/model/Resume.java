@@ -9,13 +9,15 @@ public class Resume implements Comparable<Resume> {
 
     // Unique identifier
     private final String uuid;
+    private final String fullName;
 
-    public Resume() {
-       this(UUID.randomUUID().toString());
+    public Resume(String fullName) { //throws CloneNotSupportedException {
+        this(UUID.randomUUID().toString(), "");
     }
 
-    public Resume(String uuid) { //throws CloneNotSupportedException {
+    public Resume(String uuid, String fullName) {
         this.uuid = uuid;
+        this.fullName = fullName;
     }
 
     public String getUuid() {
@@ -45,5 +47,9 @@ public class Resume implements Comparable<Resume> {
     @Override
     public String toString() {
         return uuid;
+    }
+
+    public String getFullName() {
+        return fullName;
     }
 }
