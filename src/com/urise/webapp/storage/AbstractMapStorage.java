@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class AbstractMapStorage extends AbstractStorage {
+public abstract class AbstractMapStorage extends AbstractStorage<Object> {
 
     protected final Map<String, Resume> storage = new HashMap<>();
     @Override
