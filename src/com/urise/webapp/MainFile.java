@@ -3,7 +3,7 @@ package com.urise.webapp;
 import java.io.File;
 import java.util.Objects;
 
-public class HeadFile {
+public class MainFile {
     public static void main(String[] args) {
         File file = new File(".//");
         printDir(file, 0);

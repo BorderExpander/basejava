@@ -14,6 +14,10 @@ public class CompanySection extends AbstractSection {
         companies.add(company);
     }
 
+    @Override
+    public String toString() {
+        return companies.toString();
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -26,7 +26,6 @@ public class Company {
         if (!name.equals(company.name)) return false;
         return url.equals(company.url);
     }
-
     @Override
     public int hashCode() {
         int result = name.hashCode();

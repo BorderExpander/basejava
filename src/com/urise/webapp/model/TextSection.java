@@ -3,6 +3,11 @@ package com.urise.webapp.model;
 public class TextSection extends AbstractSection {
     private String value;
 
+    @Override
+    public String toString() {
+        return value;
+    }
+
     public TextSection(String value) {
         this.value = value;
     }
