@@ -26,7 +26,9 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
     @Override
     public void clear() {
         File[] files = directory.listFiles();
-        if (files == null) throw new StorageException("IO error", "", null);
+        if (files == null) {
+            throw new StorageException("IO error", "", null);
+        }
         for (File file : files) {
             doDelete(file);
         }
@@ -38,7 +40,7 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
         if (list == null) {
             throw new StorageException("", "IO error", null);
         }
-        return 0;
+        return list.length;
     }
 
     @Override
@@ -48,7 +50,11 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
 
     @Override
     protected void doUpdate(Resume r, File file) {
-
+        try {
+            doWrite(r, file);
+        } catch (IOException e) {
+            throw new StorageException("IO error", file.getName(), e);
+        }
     }
 
     @Override
@@ -60,10 +66,10 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
     protected void doSave(Resume r, File file) {
         try {
             file.createNewFile();
-            doWrite(r, file);
         } catch (IOException e) {
             throw new StorageException("IO error", file.getAbsolutePath(), e);
         }
+        doUpdate(r, file);
     }
 
     @Override
@@ -77,14 +83,18 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
 
     @Override
     protected void doDelete(File file) {
-        if (!file.delete()) throw new StorageException("IO error", file.getName(), null);
+        if (!file.delete()) {
+            throw new StorageException("IO error", file.getName(), null);
+        }
     }
 
     @Override
     protected List<Resume> doCopyAll() {
         File[] files = directory.listFiles();
         List<Resume> resumeList = new ArrayList<>();
-        assert files != null;
+        if (files == null) {
+            throw new StorageException("IO error", null);
+        }
         for (File file : files) {
             Resume r = doGet(file);
             resumeList.add(r);
