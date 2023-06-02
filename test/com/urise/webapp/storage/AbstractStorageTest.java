@@ -7,11 +7,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
 public class AbstractStorageTest {
+    protected static final File STORAGE_DIR = new File("C:\\Dev\\basejava\\storageobj");
     protected final Storage STORAGE;
 
     private static final String UUID_1 = "uuid1";
@@ -87,7 +89,7 @@ public class AbstractStorageTest {
         resumeUpdate.addContact(ContactType.SKYPE, newSkype);
         STORAGE.update(resumeUpdate);
         Resume updResume = STORAGE.get(UUID_1);
-        Assert.assertSame(resumeUpdate, updResume);
+        Assert.assertEquals(resumeUpdate, updResume);
         Assert.assertEquals(newName, updResume.getFullName());
         Assert.assertEquals(newSkype, updResume.getContact(ContactType.SKYPE));
     }
