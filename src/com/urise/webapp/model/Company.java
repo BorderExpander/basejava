@@ -1,21 +1,32 @@
 package com.urise.webapp.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Company implements Serializable {
     private static final long serialVersionUID = 1L;
     private String name;
     private String url;
-    private final List<Period> periods = new ArrayList<>();
+    private List<Period> periods = new ArrayList<>();
+
+    public Company() {
+    }
 
     public Company(String name, String url) {
         Objects.requireNonNull(name," \"Name must not be null\"");
-        Objects.requireNonNull(url," \"Url must not be null\"");
         this.name = name;
         this.url = url;
+    }
+
+    public Company(String name, String url, List<Period> periods) {
+        this.name = name;
+        this.url = url;
+        this.periods = periods;
     }
 
     @Override

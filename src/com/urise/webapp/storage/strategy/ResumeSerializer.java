@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public abstract class AbstractResumeSerializer {
+public interface ResumeSerializer {
     public abstract void doWrite(Resume r, OutputStream os) throws IOException;
 
     public abstract Resume doRead(InputStream is) throws IOException;

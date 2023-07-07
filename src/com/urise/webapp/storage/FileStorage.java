@@ -2,7 +2,7 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.exception.StorageException;
 import com.urise.webapp.model.Resume;
-import com.urise.webapp.storage.strategy.AbstractResumeSerializer;
+import com.urise.webapp.storage.strategy.ResumeSerializer;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ import java.util.Objects;
 
 public class FileStorage extends AbstractStorage<File> {
     private final File directory;
-    private final AbstractResumeSerializer serializer;
+    private final ResumeSerializer serializer;
 
-    protected FileStorage(File directory, AbstractResumeSerializer serializer) {
+    protected FileStorage(File directory, ResumeSerializer serializer) {
         this.serializer = serializer;
         Objects.requireNonNull(directory, "directory mustn't be null");
         if (!directory.isDirectory()) {

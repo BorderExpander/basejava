@@ -7,7 +7,14 @@ import java.util.List;
 public class ListSection extends AbstractSection {
     @Serial
     private static final long serialVersionUID = 1L;
-    private final List<String> values = new ArrayList<>();
+    private List<String> values = new ArrayList<>();
+
+    public ListSection() {
+    }
+
+    public ListSection(List<String> values) {
+        this.values = values;
+    }
 
     public List<String> getValues() {
         return values;

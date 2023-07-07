@@ -177,15 +177,18 @@ public class AbstractStorageTest {
         company.addPeriod(period);
         companySection.addCompany(company);
 
+        resume.addSection(SectionType.EXPERIENCE,companySection);
+
         //Образование
         CompanySection educationSection = new CompanySection();
         Company education = new Company("education",
                 "https://www.education.org/");
-        period = new Period("education1 desccription1");
+        period = new Period("d","education1 desccription1");
         period.setBeginDate(LocalDate.of(2013, 3, 1));
         period.setEndDate(LocalDate.of(2013, 9, 1));
         education.addPeriod(period);
         educationSection.addCompany(education);
+        resume.addSection(SectionType.EDUCATION,educationSection);
 
         return resume;
     }

@@ -1,6 +1,7 @@
 package com.urise.webapp.model;
 
 import java.io.Serial;
+import java.util.Objects;
 
 public class TextSection extends AbstractSection {
     @Serial
@@ -12,7 +13,11 @@ public class TextSection extends AbstractSection {
         return value;
     }
 
+    public TextSection() {
+    }
+
     public TextSection(String value) {
+        Objects.requireNonNull(value, " \"value must not be null\"");
         this.value = value;
     }
 

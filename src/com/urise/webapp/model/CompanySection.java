@@ -7,7 +7,14 @@ import java.util.List;
 public class CompanySection extends AbstractSection {
     @Serial
     private static final long serialVersionUID = 1L;
-    private final List<Company> companies = new ArrayList<>();
+    private List<Company> companies = new ArrayList<>();
+
+    public CompanySection() {
+    }
+
+    public CompanySection(List<Company> companies) {
+        this.companies = companies;
+    }
 
     public List<Company> getCompanies() {
         return companies;
