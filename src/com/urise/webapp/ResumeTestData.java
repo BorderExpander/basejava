@@ -129,7 +129,7 @@ public class ResumeTestData {
                 case ACHIEVEMENT, QUALIFICATIONS -> {
                     List<String> rows = ((ListSection) section).getValues();
                     for (String row : rows) {
-                        System.out.println("*  " + row);
+                        System.out.println("* " + row);
                     }
                 }
                 case EXPERIENCE, EDUCATION -> {
