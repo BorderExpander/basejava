@@ -2,7 +2,8 @@ package com.urise.webapp.util;
 
 class Table{
 }
-public class deadlock {
+
+public class DeadLock {
     static final Table table1 = new Table();
     static final Table table2 = new Table();
     static public void algoritm1() {
@@ -34,7 +35,7 @@ public class deadlock {
     }
 
     public static void main(String[] args) {
-        new Thread(deadlock::algoritm1).start();
-        new Thread(deadlock::algoritm2).start();
+        new Thread(DeadLock::algoritm1).start();
+        new Thread(DeadLock::algoritm2).start();
     }
 }
